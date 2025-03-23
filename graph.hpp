@@ -1,4 +1,7 @@
 #include <iostream>
+#include "vertex.hpp"
+
+/*header file of the graph class, and also of vertex class, which used in the graph. */
 
 namespace graph{
 
@@ -14,29 +17,9 @@ namespace graph{
 		void remove_edge(int source,int dest);
 		void print_graph();
 
+		int numOfVer(){return v_num;}
+
 		~Graph();
 	};
-	
-
-	class Vertex
-	{
-	private:
-		EdgeTo *neighbors;
-		int numOfNeighbors;
-	public:
-		Vertex();
-		void add_neighbor(int num);
-		void add_neighbor(int num, int weight);
-		void del_neighbor(int num);
-		void set_weight(int ver, int weight);
-		std::string toString();
-		~Vertex();
-	};
-
-	typedef struct EdgeTo{
-		int vertex = -1;
-		int weight = 0;
-	};
-	
 	
 }
