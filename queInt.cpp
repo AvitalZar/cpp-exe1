@@ -1,6 +1,7 @@
-#include "queue.hpp"
+#include "queueVertex.hpp"
+#include "queInt.hpp"
 
-void Queue::enqueue(Vertex *add){
+void Queue::enqueue(int add){
 	node *toadd = new node{add};//a node which hold the vertex add.
 	if(head == NULL){
 		head = toadd;
@@ -11,10 +12,10 @@ void Queue::enqueue(Vertex *add){
 	}
 }
 
-Vertex* Queue::dequeue(){
+int Queue::dequeue(){
 	if(isEmpty())
 		return NULL;
-	Vertex *ans = head->ver;
+	int ans = head->data;
 	node *temp = head;
 	head = head->next;
 	free(temp);
@@ -25,8 +26,8 @@ bool Queue::isEmpty(){
 	return head==NULL;
 }
 
-Vertex* Queue::peek(){
-	return head->ver;
+int Queue::peek(){
+	return head->data;
 }
 
 Queue::~Queue(){

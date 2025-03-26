@@ -11,6 +11,8 @@ namespace graph{
 		void add_neighbor(int num, int weight);
 		void del_neighbor(int num);
 		void set_weight(int ver, int weight);
+		const EdgeTo* getNeigh(){return neighbors;}
+		int numOfNeigh(){return numOfNeighbors;}
 		std::string toString();
 		~Vertex();
 	};
