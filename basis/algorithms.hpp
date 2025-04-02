@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
-#include "graph.hpp"
-#include "queInt.hpp"
-#include "stack.hpp"
+#include "./Graph/graph.hpp"
+#include "../dataStructs/queInt.hpp"
+#include "../dataStructs/stack.hpp"
 
 namespace graph{
 
