@@ -1,5 +1,7 @@
 #include <iostream>
 #include "graph.hpp"
+#include "queInt.hpp"
+#include "stack.hpp"
 
 namespace graph{
 

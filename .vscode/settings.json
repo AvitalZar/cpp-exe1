@@ -12,5 +12,7 @@
 		"numeric": "cpp",
 		"streambuf": "cpp",
 		"utility": "cpp"
-	}
+	},
+	"makefile.makefilePath": "/home/avital/cpp-exe1/Makefile",
+	"makefile.makePath": "make"
 }

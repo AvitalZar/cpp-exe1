@@ -1,5 +1,4 @@
-#include "vertex.hpp"
-using namespace graph;
+#include <iostream>
 /*a stack which implemented by a linked list.*/
 class Stack{
 private:

@@ -1,5 +1,4 @@
-#include "vertex.hpp"
-using namespace graph;
+#include <iostream>
 /*a queue which implemented by a liked list.*/
 class Queue{
 private:

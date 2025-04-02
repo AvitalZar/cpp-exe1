@@ -1,6 +1,5 @@
 #include "algorithms.hpp"
-#include "queInt.hpp"
-#include "stack.hpp"
+
 
 namespace graph{
 	Graph Algorithms::bfs(Graph g, int s){

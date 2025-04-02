@@ -1,5 +1,6 @@
 #include <iostream>
 #include "vertex.hpp"
+#include <string>
 
 /*header file of the graph class, and also of vertex class, which used in the graph. */
 

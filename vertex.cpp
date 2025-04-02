@@ -1,5 +1,4 @@
 #include "vertex.hpp"
-#include <string>
 using namespace std;
 
 namespace graph{

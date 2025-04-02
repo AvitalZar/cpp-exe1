@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 namespace graph{
 	class Vertex
 	{
