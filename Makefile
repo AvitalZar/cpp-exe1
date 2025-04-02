@@ -1,13 +1,13 @@
 #!make -f
 
-CXX=clang++-18
+CXX=g++
 CXXFLAGS=-std=c++2a 
 
 all: Main
 	./Main
 
 Main: main.o graph.o algorithms.o vertex.o stack.o queInt.o
-	$(CXX) $(CXXFLAGS) graph.o main.o algorithms.o vertex.o stack.o queInt.o
+	$(CXX) $(CXXFLAGS) graph.o main.o algorithms.o vertex.o stack.o queInt.o -o Main
 
 graph.o: graph.cpp graph.hpp vertex.hpp
 	$(CXX) $(CXXFLAGS) --compile graph.cpp -o graph.o

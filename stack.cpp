@@ -19,7 +19,7 @@ void Stack::push(int add){
 
 int Stack::pop(){
 	if(isEmpty())
-		return NULL;
+		throw std::string("this stack is empty");
 	int ans = head->data;
 	node *temp = head;
 	head = head->next;

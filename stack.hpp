@@ -1,5 +1,8 @@
+#pragma once
 #include <iostream>
+#include "queInt.hpp"
 /*a stack which implemented by a linked list.*/
+
 class Stack{
 private:
 	node *head;
@@ -13,9 +16,3 @@ public:
 	~Stack();
 };
 
-
-
-typedef struct node{
-	int data;
-	struct node *next;
-};

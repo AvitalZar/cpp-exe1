@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "graph.hpp"
 #include "queInt.hpp"

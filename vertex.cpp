@@ -69,6 +69,7 @@ namespace graph{
 					+","+"w-"+to_string(neighbors[i].weight);
 			
 		}
+		return ans;
 	}
 
 	Vertex::~Vertex(){

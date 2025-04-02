@@ -1,4 +1,10 @@
+#pragma once
 #include <iostream>
+
+struct node{
+	int data;
+	struct node *next;
+};
 /*a queue which implemented by a liked list.*/
 class Queue{
 private:
@@ -13,9 +19,3 @@ public:
 	~Queue();
 };
 
-
-
-typedef struct node{
-	int data;
-	struct node *next;
-};

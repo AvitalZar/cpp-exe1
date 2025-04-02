@@ -1,6 +1,12 @@
+#pragma once
 #include "vertex.hpp"
 using namespace graph;
 /*a queue which implemented by a liked list.*/
+
+typedef struct node{
+	Vertex *ver;
+	struct node *next;
+};
 class Queue{
 private:
 	node *head;
@@ -14,9 +20,3 @@ public:
 	~Queue();
 };
 
-
-
-typedef struct node{
-	Vertex *ver;
-	struct node *next;
-};

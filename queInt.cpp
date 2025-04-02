@@ -13,7 +13,7 @@ void Queue::enqueue(int add){
 
 int Queue::dequeue(){
 	if(isEmpty())
-		return NULL;
+		throw std::string("this queue is empty");
 	int ans = head->data;
 	node *temp = head;
 	head = head->next;

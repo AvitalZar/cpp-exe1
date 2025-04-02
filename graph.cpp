@@ -6,7 +6,7 @@ namespace graph{
 
 	void Graph::add_edge(int source, int dest, int weight){
 		if(dest<0||dest>numOfVer()||source<0||source>numOfVer())
-			throw std::string("The vertexes' numbers are between 0-"+numOfVer());
+			throw string("The vertexes' numbers are between 0-"+numOfVer());
 		vers[source].add_neighbor(dest,weight);//intiliaze the weight automatically.
 		vers[dest].add_neighbor(source,weight);
 	}

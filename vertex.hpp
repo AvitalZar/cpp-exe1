@@ -1,6 +1,13 @@
+#pragma once
 #include <iostream>
 #include <string>
 namespace graph{
+
+	struct EdgeTo{
+		int vertex = -1;
+		int weight = 0;
+	};
+	
 	class Vertex
 	{
 	private:
@@ -18,8 +25,4 @@ namespace graph{
 		~Vertex();
 	};
 
-	typedef struct EdgeTo{
-		int vertex = -1;
-		int weight = 0;
-	};
 }
