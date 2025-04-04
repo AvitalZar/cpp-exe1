@@ -8,6 +8,9 @@ namespace graph{
 		numOfNeighbors = 0;
 	}
 	void Vertex::add_neighbor(int num){
+		if(num<0){
+			throw string("neighbor's number must be positive.");
+		}
 		for(int i = 0;i<numOfNeighbors;i++){
 			if(neighbors[i].vertex==num)
 				return;
@@ -34,6 +37,9 @@ namespace graph{
 	}
 
 	void Vertex::del_neighbor(int num){
+		if(!isNeigh(num)){
+			throw string("can't delete unexist neighbor.");
+		}
 		for(int i = 0;i<numOfNeighbors;i++){
 			if(neighbors[i].vertex==num){
 				//deleting this neighbor and decreasing the num of neighbors, moving the last neighbor to this place.
@@ -53,14 +59,40 @@ namespace graph{
 	}
 
 	void Vertex::set_weight(int ver, int weight){
+		if(!isNeigh(ver))
+			throw string("can't set weight because there's no neighbor as "+ver);
 		for(int i = 0;i<numOfNeighbors;i++){
-			if(neighbors[i].vertex==ver)
+			if(neighbors[i].vertex==ver){
 				neighbors[i].weight = weight;
 				break;
+			}
 		}
 	}
 
-	string Vertex::toString(){
+	bool Vertex::isNeigh(int ver)
+	{
+		for(int i = 0;i<numOfNeigh();i++){
+			if(getNeigh()[i].vertex==ver){
+				return true;
+			}
+		}
+		return false;
+	}
+
+	int Vertex::getWeightOf(int ver)
+	{
+		if(!isNeigh(ver))
+			throw string("can't get weight because there's no neighbor as "+ver);
+		for(int i = 0;i<numOfNeigh();i++){
+			if(getNeigh()[i].vertex==ver){
+				return getNeigh()[i].weight;
+			}
+		}
+		return 0;
+	}
+
+	string Vertex::toString()
+	{
 		string ans = string();
 		for(int i = 0;i<numOfNeighbors;i++){
 			if(i>0)

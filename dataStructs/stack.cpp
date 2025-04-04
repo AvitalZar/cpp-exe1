@@ -14,7 +14,6 @@ void Stack::push(int add){
 		head = toadd;
 		head->next = temp;
 	}
-	cout << "push " <<add<< endl;
 }
 
 int Stack::pop(){
@@ -28,7 +27,6 @@ int Stack::pop(){
 	node *temp = head;
 	head = head->next;
 	free(temp);
-	cout << "pop "<<ans<<endl;
 	return ans;
 }
 
@@ -37,7 +35,6 @@ bool Stack::isEmpty(){
 }
 
 int Stack::peek(){
-	cout<<"peek "<<head->data<<endl;
 	return head->data;
 }
 

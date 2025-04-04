@@ -6,6 +6,7 @@ TESTD=runFiles/tests
 
 TEST_SRC = $(TESTD)/*.cpp
 TEST_O = $(TEST_SRC: .cpp=.o)
+TSRC_O = queInt.o stack.o vertex.o
 
 all: Main test
 
@@ -32,14 +33,17 @@ queInt.o: dataStructs/queInt.cpp dataStructs/queInt.hpp
 main.o: runFiles/main.cpp basis/Graph/graph.hpp basis/algorithms.hpp
 	$(CXX) $(CXXFLAGS) --compile runFiles/main.cpp -o main.o
 
-test: $(TEST_O) queInt.o stack.o
-	$(CXX) $(CXXFLAGS) $(TEST_O) queInt.o stack.o -o test
+test: $(TEST_O) $(TSRC_O)
+	$(CXX) $(CXXFLAGS) $(TEST_O) $(TSRC_O) -o test
 	./test
 
 queue_test.o: queue_test.cpp dataStructs/queInt.hpp
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 	
 stack_test.o: stack_test.cpp dataStructs/stack.hpp
+	$(CXX) $(CXXFLAGS) --compile $< -o $@
+
+vertex_test.o: vertex_test.c basis/Graph/vertex.hpp
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 #test:
