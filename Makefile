@@ -32,11 +32,14 @@ queInt.o: dataStructs/queInt.cpp dataStructs/queInt.hpp
 main.o: runFiles/main.cpp basis/Graph/graph.hpp basis/algorithms.hpp
 	$(CXX) $(CXXFLAGS) --compile runFiles/main.cpp -o main.o
 
-test: $(TEST_O) queInt.o
-	$(CXX) $(CXXFLAGS) $(TEST_O) queInt.o -o test
+test: $(TEST_O) queInt.o stack.o
+	$(CXX) $(CXXFLAGS) $(TEST_O) queInt.o stack.o -o test
 	./test
 
-queue.o: queue.cpp dataStructs/queInt.hpp
+queue_test.o: queue_test.cpp dataStructs/queInt.hpp
+	$(CXX) $(CXXFLAGS) --compile $< -o $@
+	
+stack_test.o: stack_test.cpp dataStructs/stack.hpp
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
 
 #test:
@@ -45,6 +48,7 @@ queue.o: queue.cpp dataStructs/queInt.hpp
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
+
 
 clean:
 	rm -f *.o Main test

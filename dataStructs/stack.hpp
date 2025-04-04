@@ -6,9 +6,8 @@
 class Stack{
 private:
 	node *head;
-	node *tail;
 public:
-	Stack(): head(nullptr), tail(nullptr){};
+	Stack(): head(nullptr){};
 	void push(int add);
 	int pop();
 	bool isEmpty();

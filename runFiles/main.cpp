@@ -1,5 +1,6 @@
 #include "../basis/Graph/graph.hpp"
 #include "../dataStructs/queInt.hpp"
+#include "../dataStructs/stack.hpp"
 #include <iostream>
 using namespace std;
 using namespace graph;
@@ -14,5 +15,9 @@ int main(){
 	g.print_graph();*/
 	Queue q;
 	q.enqueue(5);
-	cout << q.dequeue() << endl;
+	//cout << q.dequeue() << endl;
+	Stack s;
+	s.push(10);
+	s.push(5);
+	s.pop();
 }
