@@ -8,7 +8,7 @@ private:
 	node *head;
 	node *tail;
 public:
-	Stack(){};
+	Stack(): head(nullptr), tail(nullptr){};
 	void push(int add);
 	int pop();
 	bool isEmpty();

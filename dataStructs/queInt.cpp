@@ -36,5 +36,4 @@ Queue::~Queue(){
 		head = head->next;
 		free(temp);
 	}
-	free(tail);
 }

@@ -11,7 +11,7 @@ private:
 	node *head;
 	node *tail;
 public:
-	Queue(){};
+	Queue():head(nullptr), tail(nullptr){};
 	void enqueue(int add);
 	int dequeue();
 	bool isEmpty();
