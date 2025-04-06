@@ -11,7 +11,8 @@
 		"ostream": "cpp",
 		"numeric": "cpp",
 		"streambuf": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"stdexcept": "cpp"
 	},
 	"makefile.makefilePath": "/home/avital/cpp-exe1/Makefile",
 	"makefile.makePath": "make"

@@ -9,7 +9,7 @@ namespace graph{
 	}
 	void Vertex::add_neighbor(int num){
 		if(num<0){
-			throw string("neighbor's number must be positive.");
+			throw range_error("neighbor's number must be positive.");
 		}
 		for(int i = 0;i<numOfNeighbors;i++){
 			if(neighbors[i].vertex==num)
@@ -38,7 +38,7 @@ namespace graph{
 
 	void Vertex::del_neighbor(int num){
 		if(!isNeigh(num)){
-			throw string("can't delete unexist neighbor.");
+			throw invalid_argument("can't delete unexist neighbor.");
 		}
 		for(int i = 0;i<numOfNeighbors;i++){
 			if(neighbors[i].vertex==num){
@@ -60,7 +60,7 @@ namespace graph{
 
 	void Vertex::set_weight(int ver, int weight){
 		if(!isNeigh(ver))
-			throw string("can't set weight because there's no neighbor as "+ver);
+			throw invalid_argument("can't set weight because there's no neighbor as "+ver);
 		for(int i = 0;i<numOfNeighbors;i++){
 			if(neighbors[i].vertex==ver){
 				neighbors[i].weight = weight;
@@ -82,7 +82,7 @@ namespace graph{
 	int Vertex::getWeightOf(int ver)
 	{
 		if(!isNeigh(ver))
-			throw string("can't get weight because there's no neighbor as "+ver);
+			throw invalid_argument("can't get weight because there's no neighbor as "+ver);
 		for(int i = 0;i<numOfNeigh();i++){
 			if(getNeigh()[i].vertex==ver){
 				return getNeigh()[i].weight;

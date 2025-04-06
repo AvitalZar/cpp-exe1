@@ -18,7 +18,7 @@ void Stack::push(int add){
 
 int Stack::pop(){
 	if(isEmpty())
-		throw string("this stack is empty");
+		throw runtime_error("this stack is empty");
 	int ans = head->data;
 	if(head->next==nullptr){
 		head = nullptr;

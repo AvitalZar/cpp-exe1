@@ -5,8 +5,8 @@ namespace graph{
 	
 
 	void Graph::add_edge(int source, int dest, int weight){
-		if(dest<0||dest>numOfVer()||source<0||source>numOfVer())
-			throw string("The vertexes' numbers are between 0-"+numOfVer());
+		if(dest<0||dest>=numOfVer()||source<0||source>=numOfVer())
+			throw out_of_range("The vertexes' numbers are between 0-"+numOfVer());
 		vers[source].add_neighbor(dest,weight);//intiliaze the weight automatically.
 		vers[dest].add_neighbor(source,weight);
 	}
@@ -15,13 +15,18 @@ namespace graph{
 	}
 
 	void Graph::remove_edge(int source, int dest){
+		if(dest<0||dest>=numOfVer()||source<0||source>=numOfVer())
+			throw out_of_range("Can't remove edge because the vertices' numbers are between 0-"+numOfVer());
 		vers[source].del_neighbor(dest);
 		vers[dest].del_neighbor(source);
 	}
 
 	void Graph::print_graph(){
+		cout<<"print graph with "<<numOfVer()<<" vertices:"<<endl;
+		cout<<"vertex number: v-neigbor number, w-weight of edge; etc."<<endl;
 		for(int i = 0;i<numOfVer();i++){
-			cout << i+": "+vers[i].toString() << endl;
+			if(vers[i].numOfNeigh()>0)
+				cout << i<<": "<<vers[i].toString() << endl;
 		}
 	}
 
@@ -29,7 +34,7 @@ namespace graph{
 		if(ind<numOfVer()||ind<0){
 			return vers+ind;
 		}
-		throw string("there's no vertex in that index.");
+		throw out_of_range("there's no vertex in that index.");
 	}
 
 	Graph::~Graph()
