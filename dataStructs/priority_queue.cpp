@@ -2,26 +2,23 @@
 using namespace std;
 
 void PrioQ::enqueue(int ver,int key){
-	node *toadd = new node{ver,key};
+	Item *toadd = new Item{ver,key};
 	if(isEmpty()){
-		cout<<"add first "<<ver<<endl;
 		head = toadd;
 		return;
 	}
 	
 	if(head->key > toadd->key){
-		cout<<"add in the start "<<toadd->ver<<endl;
 		toadd->next = head;
 		head = toadd;
 		return;
 	}
 
-	cout<<"add in the middle "<<toadd->ver<<endl;
-	node *prev = head;
+	Item *prev = head;
 	while(prev->next!=nullptr&&prev->next->key < toadd->key){
 		prev = prev->next;
 	}
-	node *after = prev->next;
+	Item *after = prev->next;
 	prev->next = toadd;
 	toadd->next = after;
 
@@ -30,9 +27,8 @@ void PrioQ::enqueue(int ver,int key){
 int PrioQ::dequeue(){
 	if(isEmpty())
 		throw std::runtime_error("Can't dequeue empty proiQ.");
-	cout<<"dequeue: 1th key:"<<head->key;
 	int ans = head->ver;
-	node *temp = head;
+	Item *temp = head;
 	head = head->next;
 	delete temp;
 	return ans;
@@ -53,7 +49,7 @@ int PrioQ::peek()
 void PrioQ::decreaseKey(int ver, int new_key){
 	if(isEmpty())
 		throw runtime_error("priority queue is empty.");
-	node *todo = head;
+	Item *todo = head;
 	
 	if(todo->ver == ver){
 		head = head->next;
@@ -67,7 +63,7 @@ void PrioQ::decreaseKey(int ver, int new_key){
 	if(todo->next == nullptr)
 		throw runtime_error("no such vertex in my priority queue.");
 	
-	node *temp = todo->next;
+	Item *temp = todo->next;
 	todo->next = todo->next->next;
 	delete temp;
 	enqueue(ver,new_key);
@@ -75,7 +71,7 @@ void PrioQ::decreaseKey(int ver, int new_key){
 }
 
 PrioQ::~PrioQ(){
-	node *temp;
+	Item *temp;
 	while(head!=nullptr){
 		temp = head;
 		head = head->next;

@@ -12,7 +12,8 @@
 		"numeric": "cpp",
 		"streambuf": "cpp",
 		"utility": "cpp",
-		"stdexcept": "cpp"
+		"stdexcept": "cpp",
+		"string_view": "cpp"
 	},
 	"makefile.makefilePath": "/home/avital/cpp-exe1/Makefile",
 	"makefile.makePath": "",

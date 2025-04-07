@@ -3,6 +3,8 @@
 #include "./Graph/graph.hpp"
 #include "../dataStructs/queInt.hpp"
 #include "../dataStructs/stack.hpp"
+#include "../dataStructs/priority_queue.hpp"
+
 
 namespace graph{
 

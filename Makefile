@@ -6,7 +6,7 @@ TESTD=runFiles/tests
 
 TEST_SRC = $(TESTD)/*.cpp
 TEST_O = $(TEST_SRC: .cpp=.o)
-TSRC_O = queInt.o stack.o vertex.o graph.o priority_queue.o
+TSRC_O = queInt.o stack.o vertex.o graph.o priority_queue.o algorithms.o
 
 Main: main.o graph.o algorithms.o vertex.o stack.o queInt.o priority_queue.o
 	$(CXX) $(CXXFLAGS) graph.o main.o algorithms.o vertex.o stack.o queInt.o priority_queue.o -o Main
@@ -53,6 +53,10 @@ graph_test.o: graph_test.cpp basis/Graph/graph.hpp basis/Graph/graph.cpp
 
 prioq_test.o: prioq_test.cpp dataStructs/priority_queue.hpp dataStructs/priority_queue.cpp
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
+
+algorithms_test.o: algorithms_test.cpp basis/algorithms.cpp basis/algorithms.hpp basis/Graph/graph.hpp
+	$(CXX) $(CXXFLAGS) --compile $< -o $@
+
 
 #test:
 #	$(CXX) $(CXXFLAGS) runFiles/tests/*.cpp -o test.exe

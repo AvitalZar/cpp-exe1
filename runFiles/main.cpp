@@ -19,4 +19,17 @@ int main(){
 	Graph bfs = a.bfs(g,1);
 	bfs.print_graph();
 	cout<<"end of main"<<endl;
+
+
+	//dijkstra - workinggg!!!!!
+	Graph d(6);
+	d.add_edge(0,4);
+	d.add_edge(0,3,2);
+	d.add_edge(4,1,3);
+	d.add_edge(3,1);
+	d.add_edge(2,5,5);
+	d.add_edge(2,3,2);
+
+	Graph dijkstra = a.dijkstra(d,0);
+	dijkstra.print_graph();
 }

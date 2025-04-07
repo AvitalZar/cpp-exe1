@@ -1,6 +1,7 @@
 #include "algorithms.hpp"
 using namespace std;
 
+int INF = 1e9;
 
 void white(bool* arr, int size) {
     for (int i = 0; i < size; ++i) {
@@ -40,7 +41,11 @@ namespace graph{
 	}
 
 
+
+
 	Graph Algorithms::dfs(Graph& g, int s){
+		if(s<0||s>=g.numOfVer())
+			throw out_of_range("source vertex is not in the graph.");
 		Graph ans = Graph(g.numOfVer());
 		Vertex current;
 		int cur_n;
@@ -83,5 +88,67 @@ namespace graph{
 		ans.print_graph();
 		return ans;
 	}
-}
 
+
+
+
+
+	struct v_info{
+		int key = INF;
+		int prev = -1;
+		bool visited = false;
+
+		int weight_prev = 0;
+	};
+	Graph Algorithms::dijkstra(Graph &g, int s)
+	{	
+		
+		int length = g.numOfVer();
+		if(s<0||s>=length)
+			throw out_of_range("source vertex is not in the graph.");
+		v_info *info = new v_info[length];
+		PrioQ p;
+
+		int cur_ver;
+		Vertex *current;
+
+		info[s].key = 0;
+		//insert all the vertices in the queue.
+		for(int i = 0;i<length;i++){
+			p.enqueue(i,info[i].key);
+		}
+
+		while(!p.isEmpty()){
+			cur_ver = p.dequeue();
+			info[cur_ver].visited = true;
+			current = g.get(cur_ver);
+
+			EdgeTo n;
+			for(int i = 0; i<current->numOfNeigh(); i++){
+				n = current->getNeigh()[i];
+				int nei = n.vertex;
+				if(info[nei].visited)
+					continue;
+				
+				//if the route from current vertex is lighter, relax.
+				if(info[cur_ver].key+n.weight < info[nei].key){
+					info[nei].key = info[cur_ver].key+n.weight;
+					info[nei].prev = cur_ver;
+					info[nei].weight_prev = n.weight;
+					p.decreaseKey(nei,info[nei].key);
+				}
+			}
+		}
+		
+		Graph ans = Graph(length);
+		for(int i = 0; i<length; i++){
+			if(info[i].prev!=-1){
+				ans.add_edge(i,info[i].prev,info[i].weight_prev);
+			}
+		}
+
+
+		delete[] info;
+		return ans;
+	}
+}

@@ -1,15 +1,15 @@
 #pragma once
 #include <iostream>
 
-struct node{
+struct Item{
 	int ver;
 	int key;
-	struct node *next;
+	struct Item *next;
 };
 /*a priority queue which implemented by a linked list.*/
 class PrioQ{
 private:
-	node *head;
+	Item *head;
 public:
 	PrioQ():head(nullptr){};
 	void enqueue(int ver,int key);
