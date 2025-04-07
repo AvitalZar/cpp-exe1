@@ -26,6 +26,8 @@ namespace graph{
 		bool isNeigh(int ver);
 		int getWeightOf(int ver);
 		std::string toString();
+
+		Vertex& operator=(const Vertex& other);
 		~Vertex();
 	};
 

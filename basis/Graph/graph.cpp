@@ -37,6 +37,30 @@ namespace graph{
 		throw out_of_range("there's no vertex in that index.");
 	}
 
+/*	Graph& Graph::operator=(const Graph &other){
+		if (this == &other)
+			return *this;
+	
+		delete[] vers;
+	
+		v_num = other.v_num;
+		vers = new Vertex[v_num];
+	
+		for (int i = 0; i < v_num; ++i)
+			vers[i] = other.vers[i];
+	
+		return *this;
+	}*/
+
+	Graph::Graph(const Graph &other){
+		v_num = other.v_num;
+		vers = new Vertex[v_num];
+	
+		for (int i = 0; i < v_num; ++i)
+			vers[i] = other.vers[i];
+	
+	}
+
 	Graph::~Graph()
 	{
 		delete[] vers;

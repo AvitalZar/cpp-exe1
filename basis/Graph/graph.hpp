@@ -11,7 +11,7 @@ namespace graph{
 	class Graph {
 	private:
 		Vertex *vers;
-		const int v_num;
+		int v_num;
 	public:
 		Graph(unsigned int numOfVer):v_num(numOfVer)
 			{vers = new Vertex[v_num];};
@@ -22,6 +22,9 @@ namespace graph{
 
 		int numOfVer(){return v_num;}
 		Vertex* get(int ind);
+
+		Graph& operator=(const Graph& other);
+		Graph(const Graph& other);
 
 		~Graph();
 	};

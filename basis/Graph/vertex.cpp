@@ -109,8 +109,20 @@ namespace graph{
 		return ans;
 	}
 
-	Vertex::~Vertex(){
+	Vertex &Vertex::operator=(const Vertex &other)
+	{
+		numOfNeighbors = other.numOfNeighbors;
+		capacity = other.capacity;
+		neighbors = new EdgeTo[other.capacity];
+		for(int i = 0;i<numOfNeighbors;i++){
+			neighbors[i].vertex = other.neighbors[i].vertex;
+			neighbors[i].weight = other.neighbors[i].weight;
+		}
+		return *this;
+	}
+
+	Vertex::~Vertex()
+	{
 		delete[] neighbors;
 	}
-	
 }

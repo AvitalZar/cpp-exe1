@@ -17,5 +17,6 @@ int main(){
 
 	Algorithms a;
 	Graph bfs = a.bfs(g,1);
-		bfs.print_graph();
+	bfs.print_graph();
+	cout<<"end of main"<<endl;
 }

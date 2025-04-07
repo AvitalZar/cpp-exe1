@@ -9,23 +9,25 @@ void white(bool* arr, int size) {
 }
 
 namespace graph{
-	Graph Algorithms::bfs(Graph g, int s){
-		if(s<0||s>=g.numOfVer())
+
+	Graph Algorithms::bfs(Graph& g, int s){
+		int length = g.numOfVer();
+		if(s<0||s>=length)
 			throw out_of_range("source vertex is not in the graph.");
 		cout<<"start build a bfs tree"<<endl;
-		Graph ans = Graph(g.numOfVer());
-		Vertex current;
+		Graph ans = Graph(length);
+		Vertex *current;
 		int cur_n;
-		bool isWhite[g.numOfVer()];
-		white(isWhite,g.numOfVer());
+		bool isWhite[length];
+		white(isWhite,length);
 		Queue q;
 		q.enqueue(s);
 		isWhite[s] = false;
 		while(!q.isEmpty()){
 			cur_n = q.dequeue();
-			current = *g.get(cur_n);
-			for(int i = 0;i<current.numOfNeigh();i++){
-				EdgeTo n = current.getNeigh()[i];
+			current = g.get(cur_n);
+			for(int i = 0;i<current->numOfNeigh();i++){
+				EdgeTo n = current->getNeigh()[i];
 				if(isWhite[n.vertex]){
 					ans.add_edge(cur_n,n.vertex,n.weight);
 					q.enqueue(n.vertex);
@@ -38,7 +40,7 @@ namespace graph{
 	}
 
 
-	Graph Algorithms::dfs(Graph g, int s){
+	Graph Algorithms::dfs(Graph& g, int s){
 		Graph ans = Graph(g.numOfVer());
 		Vertex current;
 		int cur_n;
