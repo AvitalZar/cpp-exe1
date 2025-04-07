@@ -22,7 +22,6 @@ TEST_CASE("Stack basic operations") {
 
 TEST_CASE("Stack handles multiple elements") {
     Stack s;
-
     for (int i = 0; i < 5; ++i)
         s.push(i);
 
@@ -32,7 +31,7 @@ TEST_CASE("Stack handles multiple elements") {
     CHECK(s.isEmpty() == true);
 }
 
-TEST_CASE("Peek does not remove element") {
+TEST_CASE("Peek doesn't remove element") {
     Stack s;
     s.push(42);
     CHECK(s.peek() == 42);

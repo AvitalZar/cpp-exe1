@@ -6,43 +6,39 @@ using namespace std;
 of values is from the start and not from the end (look at the push method).*/
 
 void Stack::push(int add){
+	
 	node *toadd = new node{add};//a node which hold the vertex add.
-	if(head == nullptr){
-		head = toadd;
-	} else{
-		node *temp = head;
-		head = toadd;
-		head->next = temp;
+	if(head != nullptr){
+		toadd->next=head;
 	}
+	head = toadd;
 }
 
 int Stack::pop(){
 	if(isEmpty())
 		throw runtime_error("this stack is empty");
 	int ans = head->data;
-	if(head->next==nullptr){
-		head = nullptr;
-		return ans;
-	}
 	node *temp = head;
 	head = head->next;
-	free(temp);
+	delete temp;
 	return ans;
 }
 
 bool Stack::isEmpty(){
-	return head==NULL;
+	return head==nullptr;
 }
 
 int Stack::peek(){
+	if(isEmpty())
+		throw runtime_error("Can't peek empty stack");
 	return head->data;
 }
 
 Stack::~Stack(){
 	node *temp;
-	while(head!=NULL){
+	while(head!=nullptr){
 		temp = head;
 		head = head->next;
-		free(temp);
+		delete temp;
 	}
 }

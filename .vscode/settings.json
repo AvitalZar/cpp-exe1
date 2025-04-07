@@ -15,5 +15,12 @@
 		"stdexcept": "cpp"
 	},
 	"makefile.makefilePath": "/home/avital/cpp-exe1/Makefile",
-	"makefile.makePath": "make"
+	"makefile.makePath": "",
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/home/avital/cpp-exe1",
+			"binaryPath": "/home/avital/cpp-exe1/Main",
+			"binaryArgs": []
+		}
+	]
 }

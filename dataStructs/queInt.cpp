@@ -13,27 +13,31 @@ void Queue::enqueue(int add){
 
 int Queue::dequeue(){
 	if(isEmpty())
-		throw std::string("this queue is empty");
+		throw std::runtime_error("Can't dequeue empty queue.");
 	int ans = head->data;
 	node *temp = head;
 	head = head->next;
-	free(temp);
+	if(head == nullptr)
+		tail = nullptr;
+	delete temp;
 	return ans;
 }
 
 bool Queue::isEmpty(){
-	return head==NULL;
+	return head==nullptr;
 }
 
 int Queue::peek(){
+	if(isEmpty())
+		throw std::runtime_error("Can't peek empty queue.");
 	return head->data;
 }
 
 Queue::~Queue(){
 	node *temp;
-	while(head!=NULL){
+	while(head!=nullptr){
 		temp = head;
 		head = head->next;
-		free(temp);
+		delete temp;
 	}
 }

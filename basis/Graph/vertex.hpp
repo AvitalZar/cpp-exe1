@@ -13,6 +13,7 @@ namespace graph{
 	private:
 		EdgeTo *neighbors;
 		int numOfNeighbors;
+		int capacity;
 	public:
 		Vertex();
 		void add_neighbor(int num);

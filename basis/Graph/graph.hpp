@@ -13,7 +13,7 @@ namespace graph{
 		Vertex *vers;
 		const int v_num;
 	public:
-		Graph(int numOfVer):v_num(numOfVer)
+		Graph(unsigned int numOfVer):v_num(numOfVer)
 			{vers = new Vertex[v_num];};
 		void add_edge(int source, int dest, int weight);
 		void add_edge(int source, int dest);

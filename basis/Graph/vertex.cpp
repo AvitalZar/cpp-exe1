@@ -6,27 +6,31 @@ namespace graph{
 	Vertex::Vertex(){
 		neighbors = new EdgeTo[2];
 		numOfNeighbors = 0;
+		capacity = 2;
 	}
 	void Vertex::add_neighbor(int num){
 		if(num<0){
 			throw range_error("neighbor's number must be positive.");
 		}
+		//if there's already an edge between them.
 		for(int i = 0;i<numOfNeighbors;i++){
 			if(neighbors[i].vertex==num)
 				return;
 		}
-		//if there's not enough place in the array
-		if((sizeof(neighbors)/sizeof(Vertex))<numOfNeighbors){
+		//if there's enough place in the array
+		if(numOfNeighbors < capacity){
 			neighbors[numOfNeighbors++].vertex = num;
 		}
 		else{
+			cout<<"increase the array for vertex "<<num<<endl;
 			EdgeTo *temp = neighbors;
-			neighbors = new EdgeTo[2*numOfNeighbors];
+			neighbors = new EdgeTo[2*capacity];
 			for(int i = 0;i<numOfNeighbors;i++){
 				neighbors[i] = temp[i];
 			}
 			neighbors[numOfNeighbors++].vertex = num;
 			delete[] temp;
+			capacity*=2;
 		}
 		set_weight(num,1);
 	}
@@ -48,13 +52,14 @@ namespace graph{
 			}
 		}
 		//decreasing the array size if needed - when we can decrease by half and stay with half null array.
-		if(numOfNeighbors<(sizeof(neighbors)/sizeof(Vertex))/4){
+		if(numOfNeighbors<capacity/4){
 			EdgeTo *temp = neighbors;
-			neighbors = new EdgeTo[numOfNeighbors*2];
+			neighbors = new EdgeTo[capacity/2];
 			for(int i = 0;i<numOfNeighbors;i++){
 				neighbors[i] = temp[i];
 			}
 			delete[] temp;
+			capacity /= 2;
 		}
 	}
 
