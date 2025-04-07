@@ -1,3 +1,4 @@
+//tchykzr@gmail.com
 #include "stack.hpp"
 using namespace std;
 

@@ -1,3 +1,4 @@
+//tchykzr@gmail.com
 #include "doctest.h"
 #include "../../dataStructs/stack.hpp"
 

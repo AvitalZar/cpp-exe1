@@ -1,9 +1,9 @@
 //tchykzr@gmail.com
-#include "priority_queue.hpp"
+#include "pq_prim.hpp"
 using namespace std;
 
-void PrioQ::enqueue(int ver,int key){
-	Item *toadd = new Item{ver,key};
+void PrimQ::enqueue(edge e,int key){
+	PItem *toadd = new PItem{e,key};
 	if(isEmpty()){
 		head = toadd;
 		return;
@@ -15,67 +15,68 @@ void PrioQ::enqueue(int ver,int key){
 		return;
 	}
 
-	Item *prev = head;
+	PItem *prev = head;
 	while(prev->next!=nullptr&&prev->next->key < toadd->key){
 		prev = prev->next;
 	}
-	Item *after = prev->next;
+	PItem *after = prev->next;
 	prev->next = toadd;
 	toadd->next = after;
 
 }
 
-int PrioQ::dequeue(){
+edge PrimQ::dequeue(){
 	if(isEmpty())
 		throw std::runtime_error("Can't dequeue empty proiQ.");
-	int ans = head->ver;
-	Item *temp = head;
+	edge ans = head->e;
+	PItem *temp = head;
 	head = head->next;
 	delete temp;
 	return ans;
 }
 
-bool PrioQ::isEmpty()
+bool PrimQ::isEmpty()
 {
 	return head==nullptr;
 }
 
-int PrioQ::peek()
+edge PrimQ::peek()
 {
 	if(isEmpty())
-		throw std::runtime_error("Can't peek empty prioQ.");
-	return head->ver;
+		throw std::runtime_error("Can't peek empty primQ.");
+	return head->e;
 }
 
-void PrioQ::decreaseKey(int ver, int new_key){
+void PrimQ::decreaseKey(edge e, int new_key){
 	if(isEmpty())
-		throw runtime_error("priority queue is empty.");
-	Item *todo = head;
+		throw runtime_error("primrity queue is empty.");
+	PItem *todo = head;
 	
-	if(todo->ver == ver){
+	if(todo->e == e){
 		head = head->next;
 		delete todo;
-		enqueue(ver,new_key);
+		enqueue(e,new_key);
 		return;
 	}
-	while(todo->next!=nullptr && todo->next->ver!=ver){
+	while(todo->next!=nullptr && !(todo->next->e==e)){
 		todo = todo->next;
 	}
 	if(todo->next == nullptr)
-		throw runtime_error("no such vertex in my priority queue.");
+		throw runtime_error("no such vertex in my primrity queue.");
 	
-	Item *temp = todo->next;
+	PItem *temp = todo->next;
 	todo->next = todo->next->next;
 	delete temp;
-	enqueue(ver,new_key);
+	enqueue(e,new_key);
 	
 }
 
-PrioQ::~PrioQ(){
-	Item *temp;
+PrimQ::~PrimQ(){
+	PItem *temp;
 	while(head!=nullptr){
 		temp = head;
 		head = head->next;
 		delete temp;
 	}
 }
+

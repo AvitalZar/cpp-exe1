@@ -1,4 +1,6 @@
 #!make -f
+#tchykzr@gmail.com
+
 
 CXX=g++ -g
 CXXFLAGS=-std=c++2a 
@@ -6,10 +8,10 @@ TESTD=runFiles/tests
 
 TEST_SRC = $(TESTD)/*.cpp
 TEST_O = $(TEST_SRC: .cpp=.o)
-TSRC_O = queInt.o stack.o vertex.o graph.o priority_queue.o algorithms.o
+TSRC_O = queInt.o stack.o vertex.o graph.o priority_queue.o algorithms.o pq_prim.o
 
-Main: main.o graph.o algorithms.o vertex.o stack.o queInt.o priority_queue.o
-	$(CXX) $(CXXFLAGS) graph.o main.o algorithms.o vertex.o stack.o queInt.o priority_queue.o -o Main
+Main: main.o graph.o algorithms.o vertex.o stack.o queInt.o priority_queue.o pq_prim.o
+	$(CXX) $(CXXFLAGS) graph.o main.o algorithms.o vertex.o stack.o queInt.o priority_queue.o pq_prim.o -o Main
 	./Main
 
 
@@ -30,6 +32,11 @@ queInt.o: dataStructs/queInt.cpp dataStructs/queInt.hpp
 
 priority_queue.o: dataStructs/priority_queue.cpp dataStructs/priority_queue.hpp
 	$(CXX) $(CXXFLAGS) --compile dataStructs/priority_queue.cpp -o priority_queue.o
+
+pq_prim.o: dataStructs/pq_prim.cpp dataStructs/pq_prim.hpp
+	$(CXX) $(CXXFLAGS) --compile dataStructs/pq_prim.cpp -o pq_prim.o
+
+
 
 
 main.o: runFiles/main.cpp basis/Graph/graph.hpp basis/algorithms.hpp
@@ -56,6 +63,10 @@ prioq_test.o: prioq_test.cpp dataStructs/priority_queue.hpp dataStructs/priority
 
 algorithms_test.o: algorithms_test.cpp basis/algorithms.cpp basis/algorithms.hpp basis/Graph/graph.hpp
 	$(CXX) $(CXXFLAGS) --compile $< -o $@
+
+pq_prim_test.o: pq_prim_test.cpp dataStructs/pq_prim.hpp dataStructs/pq_prim.cpp
+	$(CXX) $(CXXFLAGS) --compile $< -o $@
+
 
 
 #test:

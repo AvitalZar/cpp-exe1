@@ -1,5 +1,7 @@
+//tchykzr@gmail.com
 #include "doctest.h"
 #include "../../dataStructs/priority_queue.hpp"
+#include "../../dataStructs/pq_prim.hpp"
 using namespace std;
 
 
@@ -59,3 +61,6 @@ TEST_CASE("decreaseKey on non-existing node throws") {
 
     CHECK_THROWS_AS(pq.decreaseKey(2, 5), std::runtime_error); // אין כזה
 }
+
+
+

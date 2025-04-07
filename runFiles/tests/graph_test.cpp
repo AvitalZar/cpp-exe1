@@ -1,3 +1,4 @@
+//tchykzr@gmail.com
 #include "doctest.h"
 #include "../../basis/Graph/graph.hpp"
 using namespace graph;

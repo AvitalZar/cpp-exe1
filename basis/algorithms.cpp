@@ -1,3 +1,4 @@
+//tchykzr@gmail.com
 #include "algorithms.hpp"
 using namespace std;
 
@@ -149,6 +150,46 @@ namespace graph{
 
 
 		delete[] info;
+		return ans;
+	}
+
+
+
+	Graph Algorithms::prim(Graph &g, int s)
+	{	
+		cout<<"prim"<<endl;
+		int length = g.numOfVer();
+		if(s<0||s>=length)
+			throw out_of_range("source vertex is not in the graph.");
+
+		Graph ans(length); 
+		bool inTree[length] = {false};
+		inTree[s] = true;
+		PrimQ q;
+		
+		Vertex *current = g.get(s);
+		for(int i = 0; i<current->numOfNeigh();i++){
+			edge add = {s,current->getNeigh()[i].vertex,current->getNeigh()[i].weight};
+			q.enqueue(add,add.w);
+		}
+
+		while(!q.isEmpty()){
+			edge cur = q.dequeue();
+			int cur_v = cur.d;
+			current = g.get(cur_v);
+			if(inTree[cur_v])
+				continue;
+			ans.add_edge(cur.s,cur.d,cur.w);
+			inTree[cur_v] = true;
+
+			for(int i = 0; i<current->numOfNeigh();i++){
+				edge add = {cur_v,current->getNeigh()[i].vertex,current->getNeigh()[i].weight};
+				q.enqueue(add,add.w);
+			}
+
+		}
+
+
 		return ans;
 	}
 }

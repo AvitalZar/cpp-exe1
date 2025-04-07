@@ -1,3 +1,4 @@
+//tchykzr@gmail.com
 #include "../../dataStructs/queInt.hpp"
 #include "doctest.h"
 

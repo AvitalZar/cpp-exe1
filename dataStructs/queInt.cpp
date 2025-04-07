@@ -1,3 +1,4 @@
+//tchykzr@gmail.com
 #include "queInt.hpp"
 
 void Queue::enqueue(int add){

@@ -1,3 +1,4 @@
+//tchykzr@gmail.com
 #include "../basis/Graph/graph.hpp"
 #include "../basis/algorithms.hpp"
 #include "../dataStructs/queInt.hpp"
@@ -32,4 +33,7 @@ int main(){
 
 	Graph dijkstra = a.dijkstra(d,0);
 	dijkstra.print_graph();
+
+	Graph prim = a.prim(d,0);
+	prim.print_graph();
 }
